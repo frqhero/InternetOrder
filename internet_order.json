@@ -1,0 +1,17 @@
+{
+   "customer_name": "Тест",
+   "data": [
+      {
+         "series": "d9bbe7d5-bce1-11ed-9690-000c2968dd25",
+         "price": 7150
+      }
+   ],
+   "delivery_address": "Россия, Норильск, Тестовая , 3",
+   "delivery_price": 100000,
+   "loan": {
+      "body": 101792
+   },
+   "order_date": "2023-04-17T21:45:37.000000",
+   "order_number": 271,
+   "prepaid": 107150
+}
