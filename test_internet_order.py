@@ -502,6 +502,50 @@ class TestInternetOrder(unittest.TestCase):
             response.text,
         )
 
+    def test_prepaid(self):
+        self.payload['prepaid'] = '1'
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Тип значения ключа prepaid не число',
+            response.text,
+        )
+
+    def test_load(self):
+        self.payload['loan'] = '1'
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Тип значения ключа loan не объект',
+            response.text,
+        )
+        self.payload['loan'] = {}
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Отсутствует обязательное поле body',
+            response.text,
+        )
+        self.payload['loan'] = {'body': '10'}
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Тип значения ключа body не число',
+            response.text,
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
