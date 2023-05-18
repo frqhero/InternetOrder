@@ -354,6 +354,154 @@ class TestInternetOrder(unittest.TestCase):
             response.text,
         )
 
+    def test_discount_card(self):
+        self.payload['discount_card'] = 1
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Тип значения ключа discount_card не строка',
+            response.text,
+        )
+        self.payload['discount_card'] = ''
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'discount_card не должно быть пустым',
+            response.text,
+        )
+        self.payload['discount_card'] = str(uuid4())
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Не найдена дисконтная карта по гуиду',
+            response.text,
+        )
+
+    def test_discounts(self):
+        self.payload['discounts'] = 1
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Тип значения ключа discounts не массив',
+            response.text,
+        )
+        self.payload['discounts'] = []
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Массив discounts пустой',
+            response.text,
+        )
+        self.payload['discounts'] = [
+            {}
+        ]
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Отсутствует обязательное поле discount',
+            response.text,
+        )
+        self.payload['discounts'] = [
+            {'discount': 1}
+        ]
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Тип значения ключа discount не строка',
+            response.text,
+        )
+        self.payload['discounts'] = [
+            {'discount': ''}
+        ]
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'discount не должно быть пустым',
+            response.text,
+        )
+        self.payload['discounts'] = [
+            {'discount': 'скидка'}
+        ]
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Отсутствует обязательное поле percent',
+            response.text,
+        )
+        self.payload['discounts'] = [
+            {
+                'discount': 'скидка',
+                'percent': '',
+            }
+        ]
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Тип значения ключа percent не число',
+            response.text,
+        )
+        self.payload['discounts'] = [
+            {
+                'discount': 'скидка',
+                'percent': 10,
+            }
+        ]
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Отсутствует обязательное поле sum',
+            response.text,
+        )
+        self.payload['discounts'] = [
+            {
+                'discount': 'скидка',
+                'percent': 10,
+                'sum': '10'
+            }
+        ]
+        response = self.get_response()
+        self.assertEqual(
+            response.status_code,
+            500,
+        )
+        self.assertIn(
+            'Тип значения ключа sum не число',
+            response.text,
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
