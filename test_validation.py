@@ -6,7 +6,7 @@ from environs import Env
 import requests
 
 
-class TestInternetOrder(unittest.TestCase):
+class TestInternetOrderValidation(unittest.TestCase):
 
     def setUp(self):
         env = Env()
@@ -545,6 +545,10 @@ class TestInternetOrder(unittest.TestCase):
             'Тип значения ключа body не число',
             response.text,
         )
+
+    def test_just(self):
+        response = self.get_response()
+        1
 
 
 if __name__ == '__main__':

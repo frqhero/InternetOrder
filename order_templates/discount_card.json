@@ -1,0 +1,14 @@
+{
+    "bank_card": false,
+    "customer_name": "Фамилия Имя",
+    "data": [
+        {"series": "2e03cb35-aba1-11ed-968c-000c2968dd25", "price": 31050}
+    ],
+    "delivery_address": "Makhachkala",
+    "delivery_price": 0,
+    "discount_card": "d774b06e-5679-11ec-964d-000c2968dd25",
+    "discounts": [
+        {"discount": "zolotaya card", "percent": 3, "sum": 0}],
+    "order_date": "2023-05-21T10:30:00.988741",
+    "order_number": 777
+}

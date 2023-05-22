@@ -1,0 +1,11 @@
+{
+    "bank_card": false,
+    "customer_name": "Фамилия Имя",
+    "data": [
+        {"series": "2e03cb35-aba1-11ed-968c-000c2968dd25", "price": 31050}
+    ],
+    "delivery_address": "Makhachkala",
+    "delivery_price": 1000,
+    "order_date": "2023-05-21T10:30:00.988741",
+    "order_number": 777
+}
