@@ -14,7 +14,8 @@ class TestInternetOrderValidation(unittest.TestCase):
         self.api_username = env('API_USERNAME')
         self.api_password = env('API_PASSWORD')
         self.url = env('API_URL')
-        with open('internet_order.json', 'r') as file:
+        fixture = env('FIXTURE')
+        with open(fixture, 'r') as file:
             self.payload = json.load(file)
 
     def get_response(self):
@@ -514,7 +515,7 @@ class TestInternetOrderValidation(unittest.TestCase):
             response.text,
         )
 
-    def test_load(self):
+    def test_loan(self):
         self.payload['loan'] = '1'
         response = self.get_response()
         self.assertEqual(

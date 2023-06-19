@@ -1,0 +1,18 @@
+{
+   "bank_card":true,
+   "customer_name":"Малладова Индира Абдурахмановна",
+   "data":[
+      {
+         "series":"e08d4e31-59b8-11ec-964d-000c2968dd25",
+         "price":34050
+      }
+   ],
+   "delivery_address":"Россия, Махачкала, Башкирская , Д 1 кВ 9 ",
+   "delivery_price":0,
+   "loan":{
+      "body": 31496.2500
+   },
+   "order_date":"2023-05-18T16:00:47.000000",
+   "order_number":298,
+   "prepaid":34050
+}
